@@ -164,6 +164,16 @@ body {
     line-height: 1.5;
 }
 
+.card-body a{
+    color: #000 !important;
+    text-decoration: none !important;
+    
+
+}
+
+.card-body a:hover{
+    color: #28a745 !important;
+}
 
 .divider {
     border: none;

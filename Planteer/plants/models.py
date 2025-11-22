@@ -19,8 +19,20 @@ class Plant(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
     def get_category_display(self):
         for choice_value, choice_label in self.CategoryChoices.choices:
             if self.category.lower() == choice_value:
                 return choice_label
         return self.category
+    
+class Comment(models.Model):
+    plant = models.ForeignKey(Plant, on_delete= models.CASCADE)
+    name = models.CharField(max_length=1024)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} on {self.plant.name}"
