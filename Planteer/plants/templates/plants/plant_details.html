@@ -23,34 +23,40 @@
             </div>
 
             <div class="plant-info">
-                <p><strong>Native to:</strong><br>{{plant.countries.all|join:", "}}</p>
+                <p><strong>Native to:</strong><br>
+                    {% for country in plant.countries.all %}
+                        <a href="{% url 'plants:plants_by_country' country.id %}">{{country.name}}</a>{% if not forloop.last%}, {% endif %}
+                    {% endfor %}
+                    </p>
                 <p><strong>Is Edible:</strong> {{ plant.is_edible|yesno:"Yes,No" }}</p>
                 <p><strong>Used For:</strong><br>{{ plant.used_for|linebreaks }}</p>
             </div>
         </div>
     </div>
-
-    <div class="plant-actions mt-5">
-        <div class="d-flex gap-3 justify-content-end">
-            <a href="/plants/{{ plant.id }}/update/" class="btn btn-outline-success">
-                <i class="fas fa-edit"></i> Update Plant
-            </a>
-            <a href="/plants/{{ plant.id }}/delete/" class="btn btn-outline-danger"
-            onclick="return confirm('Are you sure you want to delete this plant?')">
-                
-                <i class="fas fa-trash"></i> Delete Plant
-            </a>
+    {% if request.user.is_staff %}
+        <div class="plant-actions mt-5">
+            <div class="d-flex gap-3 justify-content-end">
+                <a href="/plants/{{ plant.id }}/update/" class="btn btn-outline-success">
+                    <i class="fas fa-edit"></i> Update Plant
+                </a>
+                <a href="/plants/{{ plant.id }}/delete/" class="btn btn-outline-danger"
+                onclick="return confirm('Are you sure you want to delete this plant?')">
+                    
+                    <i class="fas fa-trash"></i> Delete Plant
+                </a>
+            </div>
         </div>
-    </div>
+    {% endif %}
     
     <hr>
+
 
     <h2>Comments ({{comments.count}})</h2>
 
     <div class="d-flex flex-column gap-3 p-3 shadow">
         {% for comment in comments %}
             <div class="d-flex flex-column">
-                <h4>{{comment.name}}</h4>
+                <h4>{{comment.user.username}}</h4>
                 <p>{{comment.comment}}</p>
                 <p class="text-muted ">{{comment.created_at}}</p>
             </div>
@@ -59,13 +65,19 @@
 
     </div>
 
-    <h5 class="fw-bold mt-3">Add Comment</h5>
-    <form class="d-flex flex-column gap-2" action="{% url 'plants:add_comment_view' plant.id %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="name" class="form-control" required minlength="3" placeholder="Name">
-        <textarea name="comment" class="form-control" required minlength="3" placeholder="Comment..."></textarea>
-        <input type="submit" class="btn btn-success justify-content-end pd" value="Add Comment">
-    </form>
+    {% if request.user.is_authenticated %}
+        <h5 class="fw-bold mt-3">Add Comment</h5>
+        <form class="d-flex flex-column gap-2" action="{% url 'plants:add_comment_view' plant.id %}" method="post">
+            {% csrf_token %}
+            <textarea name="comment" class="form-control" required minlength="3" placeholder="Comment..."></textarea>
+            <input type="submit" class="btn btn-success justify-content-end pd" value="Add Comment">
+        </form>
+
+    {% else %}
+        <div class="p-2 rounded alert  alert-warning mt-4 d-flex flex-column gap-2">
+            <p>Only registered users can add reviews</p>
+        </div>
+    {% endif %}
 
 
     <div class="related-plants-section">

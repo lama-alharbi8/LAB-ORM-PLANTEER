@@ -28,15 +28,16 @@ body {
 
 }
 
-.plant-info a{
+.plant-info a {
     color: #000 !important;
     text-decoration: none !important;
-    
+
 
 }
-.plant-info a:hover{
+
+.plant-info a:hover {
     color: #28a745 !important;
-    
+
 }
 
 
@@ -62,6 +63,15 @@ body {
 
 .plant-info {
     padding: 0 10px;
+}
+
+.paginator a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.paginator a:hover {
+    color: #28a745 !important;
 }
 
 .edible-option {
@@ -164,14 +174,14 @@ body {
     line-height: 1.5;
 }
 
-.card-body a{
+.card-body a {
     color: #000 !important;
     text-decoration: none !important;
-    
+
 
 }
 
-.card-body a:hover{
+.card-body a:hover {
     color: #28a745 !important;
 }
 

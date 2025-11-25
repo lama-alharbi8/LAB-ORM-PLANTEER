@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}All Plants Nativ to {{country.name}}{% endblock %}
+
+
+{% block content %}
+
+<div class="alert alert-info mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-baseline gap-2">
+            <h2 class="mb-0">Plants Native to: {{country.name}}</h2>
+            <img src="{{ country.flag.url }}" alt="{{ country.name }} flag" 
+                style="height: 22px; width: auto; margin-bottom: 2px;">
+        </div>
+        <a href="{% url 'plants:all_view' %}" class="btn btn-sm btn-outline-info">Show All</a>
+    </div>
+</div>
+<div class="row py-5">
+    {% for plant in plants %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="plant-card">
+            {% if plant.image %}
+            <img src="{{ plant.image.url }}" class="plant-image w-100" style="height: 250px; object-fit: cover;">
+            {% else %}
+            <div class="plant-image w-100 bg-light d-flex align-items-center justify-content-center"
+                style="height: 250px;">
+                <i class="fas fa-leaf fa-3x text-muted"></i>
+            </div>
+            {% endif %}
+        </div>
+        <div class="plant-info mt-3">
+            <a href="{% url 'plants:plant_detail_view' plant.id %}">
+                <h5 class="fw-bold mb-2">{{ plant.name }}</h5>
+            </a>
+            <p class="text-muted mb-2">{{ plant.about|truncatewords:15 }}</p>
+            <span class="fw-bold mb-2">{{ plant.get_category_display }}</span>
+
+            <div class="mt-2">
+                <small class="text-muted">
+                    Native to: {{ plant.countries.all|join:", " }}
+                </small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

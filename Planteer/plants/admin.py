@@ -8,7 +8,7 @@ class PlantAdmin(admin.ModelAdmin):
     list_filter = ('category',)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display=('name','plant','created_at')
+    list_display=('user','plant','created_at')
     list_filter = ('plant',)
 
 admin.site.register(Plant,PlantAdmin)

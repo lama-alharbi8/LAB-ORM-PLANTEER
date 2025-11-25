@@ -24,62 +24,86 @@
             {% if country_filter %}
             <a href="{% url 'plants:all_view' %}" class="btn btn-outline-secondary">Clear</a>
             {% endif %}
-            
+
         </form>
     </div>
 </div>
 
 {% if country_filter %}
-    {% for country in countries %}
-        {% if country.id == country_filter|add:0 %}
-            <div class="alert alert-info mb-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center gap-2">
-                        <strong>Filtered by:</strong>{{country.name}}
-                        <img src="{{ country.flag.url }}" alt="{{ country.name }} flag" class="flag-icon" style="height: 16px; width: auto;">
-                    </div>
-                    <a href="{% url 'plants:all_view' %}" class="btn btn-sm btn-outline-info">Show All</a>
-                </div>
-            </div>
-        {% endif %}
-    {% endfor %}
+{% for country in countries %}
+{% if country.id == country_filter|add:0 %}
+<div class="alert alert-info mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+            <strong>Filtered by:</strong>{{country.name}}
+            <img src="{{ country.flag.url }}" alt="{{ country.name }} flag" class="flag-icon"
+                style="height: 16px; width: auto;">
+        </div>
+        <a href="{% url 'plants:all_view' %}" class="btn btn-sm btn-outline-info">Show All</a>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
 {% endif %}
 
 {% if plants %}
-        <div class="row">
-            {% for plant in plants %} 
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="plant-card">
-                    {% if plant.image %}
-                    <img src="{{ plant.image.url }}" class="plant-image w-100" style="height: 250px; object-fit: cover;">
-                    {% else %}
-                    <div class="plant-image w-100 bg-light d-flex align-items-center justify-content-center" style="height: 250px;">
-                        <i class="fas fa-leaf fa-3x text-muted"></i>
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="plant-info mt-3">
-                    <a href="{% url 'plants:plant_detail_view' plant.id %}"><h5 class="fw-bold mb-2">{{ plant.name }}</h5></a>
-                    <p class="text-muted mb-2">{{ plant.about|truncatewords:15 }}</p>
-                    <span class="fw-bold mb-2">{{ plant.get_category_display }}</span>
-
-                    <div class="mt-2">
-                        <small class="text-muted">
-                            Native to: {{ plant.countries.all|join:", " }}
-                        </small>
-                    </div>
-                </div>
+<div class="row">
+    {% for plant in plants %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="plant-card">
+            {% if plant.image %}
+            <img src="{{ plant.image.url }}" class="plant-image w-100" style="height: 250px; object-fit: cover;">
+            {% else %}
+            <div class="plant-image w-100 bg-light d-flex align-items-center justify-content-center"
+                style="height: 250px;">
+                <i class="fas fa-leaf fa-3x text-muted"></i>
             </div>
-            {% endfor %}
+            {% endif %}
         </div>
-        {% else %}
-        <div class="text-center py-5">
-            <i class="fas fa-seedling fa-5x text-muted mb-3"></i> 
-            <h3 class="text-muted">No plants in the Database</h3>
-            <p class="text-muted">Plant your first plant!</p>
-            <a href="{% url 'plants:add_view' %}" class="btn btn-success btn-lg">
-                <i class="fas fa-plus me-2"></i>Add Plant
+        <div class="plant-info mt-3">
+            <a href="{% url 'plants:plant_detail_view' plant.id %}">
+                <h5 class="fw-bold mb-2">{{ plant.name }}</h5>
             </a>
+            <p class="text-muted mb-2">{{ plant.about|truncatewords:15 }}</p>
+            <span class="fw-bold mb-2">{{ plant.get_category_display }}</span>
+
+            <div class="mt-2">
+                <small class="text-muted">
+                    Native to: {{ plant.countries.all|join:", " }}
+                </small>
+            </div>
         </div>
-        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-5">
+    <i class="fas fa-seedling fa-5x text-muted mb-3"></i>
+    <h3 class="text-muted">No plants in the Database</h3>
+    <p class="text-muted">Plant your first plant!</p>
+    <a href="{% url 'plants:add_view' %}" class="btn btn-success btn-lg">
+        <i class="fas fa-plus me-2"></i>Add Plant
+    </a>
+</div>
+{% endif %}
+
+<div class="paginator d-flex justify-content-center align-items-center mt-5 gap-4 flex-wrap">
+    {% if plants.has_previous %}
+    <ul class="pagination mb-0">
+        <li class="page-item"><a class="page-link" href="?page=1">&laquo;&laquo; First</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ plants.previous_page_number }}">&laquo; Previous</a></li>
+    </ul>
+    {% endif %}
+    
+    <div class="page-info">
+        Page {{ plants.number }} of {{ plants.paginator.num_pages }}
+    </div>
+    
+    {% if plants.has_next %}
+    <ul class="pagination mb-0">
+        <li class="page-item"><a class="page-link" href="?page={{ plants.next_page_number }}">Next &raquo;</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ plants.paginator.num_pages }}">Last &raquo;&raquo;</a></li>
+    </ul>
+    {% endif %}
+</div>
 {% endblock %}
