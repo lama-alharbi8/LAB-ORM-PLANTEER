@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from .models import Plant, Comment, Country
 from .forms import PlantForm
+from accounts.models import Favorite
 
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -36,6 +37,10 @@ def plant_detail_view(request:HttpRequest, plant_id:int):
     plant = Plant.objects.get(pk=plant_id)
     comments = Comment.objects.filter(plant=plant)
 
+    is_favorite = Favorite.objects.filter(plant=plant, user =request.user).exists() if request.user.is_authenticated else False
+
+
+
 
     related_plants = Plant.objects.filter(
         category=plant.category
@@ -44,7 +49,8 @@ def plant_detail_view(request:HttpRequest, plant_id:int):
     context = {
         'plant': plant,
         'related_plants': related_plants,
-        'comments': comments
+        'comments': comments,
+        'is_favorite': is_favorite
 
     }
     
@@ -153,7 +159,32 @@ def add_comment_view(request:HttpRequest, plant_id):
 
 def plants_by_country(request:HttpRequest, country_id:int):
 
+
     country = Country.objects.get(pk=country_id)
     plants = country.plant_set.all()
 
     return render(request, 'plants/plants_by_country.html', {'country':country, 'plants':plants})
+
+def add_favorite_view(request:HttpRequest, plant_id):
+
+    if not request.user.is_authenticated:
+        messages.error(request, "Only registered user can add to favorite","alert-danger")
+        return redirect("accounts:sign_in")
+    
+    try:
+        plant = Plant.objects.get(pk=plant_id)
+
+        favorite = Favorite.objects.filter(plant= plant, user=request.user).first()
+        if not favorite:
+            new_favorite = Favorite(user = request.user, plant = plant)
+            new_favorite.save()
+            messages.success(request, "Favorite added", "alert-success")
+        else:
+            favorite.delete()
+            messages.warning(request, "Favorite removed", "alert-warning")
+
+    except Exception as e:
+        print(e)
+
+    return redirect('plants:plant_detail_view', plant_id=plant_id)
+

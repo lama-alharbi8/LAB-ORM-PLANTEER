@@ -255,6 +255,12 @@ body {
     padding-top: 30px;
 }
 
+.profile_image{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
 
 @media (max-width: 768px) {
     .plant-details-container {

@@ -1,0 +1,45 @@
+{% extends 'main/base.html'%}
+
+
+{% block title %} Update {{request.user.username}} {% endblock %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center">
+
+  <h2 class="mb-4">Update {{request.user.first_name}} Profile</h2>
+  <form class="d-flex flex-column gap-3 w-50" action="{% url 'accounts:update_user_profile' %}" method="POST"
+    enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required value="{{request.user.email}}">
+      <label for="floatingInput">Email address</label>
+    </div>
+
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="First name" name="first_name" required value="{{request.user.first_name}}">
+      <label for="floatingInput">First name</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="Last name" name="last_name" required value="{{request.user.last_name}}">
+      <label for="floatingInput">Last name</label>
+    </div>
+
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="About" name="about" id="floatingInput">{{request.user.profile.about}}</textarea>
+      <label for="floatingInput">About</label>
+    </div>
+
+    <h5>Choose your profile picture:</h5>
+    <img class="profile_image rounded-4" src="{{request.user.profile.profile_image.url}}" alt="">
+    <input class="form-control" type="file" name="profile_image" accept="images/*">
+
+
+    <button class="btn btn-success w-100 py-2" type="submit">Update</button>
+  </form>
+</div>
+
+{% endblock %}

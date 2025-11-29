@@ -15,6 +15,16 @@
             {% endif %}
         </div>
         <div class="plant-text-section">
+            <div class="d-flex justify-content-between align-items-start">
+                <h1 class="plant-title">{{ plant.name }}</h1>
+                <a class="text-decoration-none" style="color: #218838;" href="{% url 'plants:add_favorite_view' plant.id %}">
+                 {% if is_favorite %}
+                <i class="bi bi-heart-fill"></i>
+                {% else %}
+                <i class="bi bi-heart"></i>
+                {% endif %}
+                </a>
+            </div>
             <h1 class="plant-title">{{ plant.name }}</h1>
             <p class="plant-category">{{ plant.get_category_display }}</p>
 
@@ -56,7 +66,7 @@
     <div class="d-flex flex-column gap-3 p-3 shadow">
         {% for comment in comments %}
             <div class="d-flex flex-column">
-                <h4>{{comment.user.username}}</h4>
+                <a class="text-decoration-none" style="color: #218838;" href="{% url 'accounts:user_profile' comment.user.username %}"><h4>{{comment.user.username}}</h4></a> 
                 <p>{{comment.comment}}</p>
                 <p class="text-muted ">{{comment.created_at}}</p>
             </div>

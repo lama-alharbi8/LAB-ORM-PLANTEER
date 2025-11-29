@@ -1,0 +1,77 @@
+{% extends 'main/base.html'%}
+
+
+{% block title %} Profile for {{user.username}}  {% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+
+    <div class="col-2">
+
+        <img src="{{user.profile.profile_image.url}}" class="w-100 rounded-circle"  />
+        <h5>@{{user.username}}</h5>
+        {% if request.user == user %}
+            <a class="text-decoration-none" style="color: #218838;"  href="{% url 'accounts:update_user_profile' %}"><i class="bi bi-pencil-square"></i></a>
+        {% endif %}
+
+    </div>
+
+
+    <div class="col">
+
+        <h4>About {{user.first_name}}:</h4>
+
+        <div class="d-flex flex-column gap-3">
+            <p>{{user.profile.about}}</p>
+
+
+            <hr />
+
+            <h4>{{user.first_name}} Comments</h4>
+
+            {% for comment in user.comment_set.all %}
+            <div class="d-flex flex-column p-3 shadow">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>{{comment.user.first_name}} {{comment.user.last_name}}</h4>
+                </div>
+                
+                <p>{{comment.comment}}</p>
+                <a class="text-decoration-none" style="color: #218838;" href="{% url 'plants:plant_detail_view' comment.plant.id %}"><h5>On Plants: {{comment.plant.name }}</h5></a>
+                <p class="text-muted">{{comment.created_at}}</p>
+            </div>
+            {% endfor %}
+
+             {% if request.user == user %}
+
+            <h3>Favorite</h3>
+
+            <div class="row row-cols-3 gap-4">
+
+            {% for favorite in request.user.favorite_set.all %}
+
+                <div class="col d-flex flex-column gap-2 align-items-center p-4 shadow rounded">
+                    <img src="{{favorite.plant.image.url}}" class="w-100 rounded"/>
+                    <a class="text-decoration-none" style="color: #218838;" href="{% url 'plants:plant_detail_view' favorite.plant.id %}"><h3>{{favorite.plant.name }}</h3></a>
+                </div>
+
+            {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+
+
+        </div>
+        
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

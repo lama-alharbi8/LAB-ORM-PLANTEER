@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{%block title%}Planteer{%endblock%}</title>
@@ -64,7 +65,7 @@
                         <a class="nav-link" href="{% url 'main:contact_view' %}">Contact Us</a>
                         {% if request.user.is_authenticated %}
                             <div class="d-flex gap-1 align-items-center">
-                                <h6 class="p-0 m-0" style="color: #218838;">Welcome {{user.username}},</h6>
+                                <a class="nav-link" style="color: #218838;" href="{% url 'accounts:user_profile' request.user.username %}">Welcome {{user.username}},</a>
                                 <a class="nav-link" href="{% url 'accounts:log_out' %}?next={{request.path}}">Log Out</a>
                             </div>
                             {% if request.user.is_staff %}
