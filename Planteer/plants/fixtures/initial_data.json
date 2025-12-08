@@ -1,0 +1,288 @@
+[
+{
+  "model": "plants.country",
+  "pk": 1,
+  "fields": {
+    "name": "Saudi Arabia",
+    "flag": "images/__6.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 2,
+  "fields": {
+    "name": "Kuwait",
+    "flag": "images/Kuwait_Large_Flag_1.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 3,
+  "fields": {
+    "name": "USA",
+    "flag": "images/USA.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 4,
+  "fields": {
+    "name": "Colombia",
+    "flag": "images/Colombia__Wikipedia_a_enciclopedia_livre.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 5,
+  "fields": {
+    "name": "China",
+    "flag": "images/texturized_Chinese_Flag_of_China.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 6,
+  "fields": {
+    "name": "Indonesia",
+    "flag": "images/Indonesia.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 7,
+  "fields": {
+    "name": "Mexico",
+    "flag": "images/__7.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 8,
+  "fields": {
+    "name": "Peru",
+    "flag": "images/Peru_Lima.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 9,
+  "fields": {
+    "name": "Ecuador",
+    "flag": "images/Ecuador_-_Wikipedia_la_enciclopedia_libre.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 10,
+  "fields": {
+    "name": "Sudan",
+    "flag": "images/Sudan.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 11,
+  "fields": {
+    "name": "Yemen",
+    "flag": "images/Yemen_-_Wikipedia_la_enciclopedia_libre.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 12,
+  "fields": {
+    "name": "Spain",
+    "flag": "images/Spain.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 13,
+  "fields": {
+    "name": "France",
+    "flag": "images/Vice_President_of_French_Club.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 14,
+  "fields": {
+    "name": "Italy",
+    "flag": "images/__8.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 15,
+  "fields": {
+    "name": "Japan",
+    "flag": "images/Bandera_de_Japon.jpeg"
+  }
+},
+{
+  "model": "plants.country",
+  "pk": 16,
+  "fields": {
+    "name": "Thailand",
+    "flag": "images/Thailand-flag-w1280___YourOnly_One.jpeg"
+  }
+},
+{
+  "model": "plants.plant",
+  "pk": 1,
+  "fields": {
+    "name": "Watermelon",
+    "about": "Watermelon is a flowering plant species of the Cucurbitaceae family. It is a scrambling and trailing vine-like plant that is widely cultivated for its large, sweet, and juicy fruit. The fruit has a smooth green rind on the outside and sweet, watery red or pink flesh on the inside, often with black seeds. Watermelons are over 90% water, making them exceptionally hydrating during hot weather.",
+    "used_for": "Primarily consumed fresh as a refreshing fruit, used in fruit salads, smoothies, and desserts. Also used to make watermelon juice, sorbets, and in some cultures, the rind is pickled. The seeds can be roasted and eaten as snacks.",
+    "image": "images/watermelon-fruit-background.jpg",
+    "category": "fruit",
+    "is_edible": true,
+    "created_at": "2025-11-19T11:35:19.757Z",
+    "updated_at": "2025-11-23T18:45:26.383Z",
+    "countries": [
+      10
+    ]
+  }
+},
+{
+  "model": "plants.plant",
+  "pk": 2,
+  "fields": {
+    "name": "Basil",
+    "about": "Basil is a culinary herb of the family Lamiaceae. It is a tender plant, used in cuisines worldwide. There are many varieties of basil, as well as several related species or hybrids also called basil. The most commonly used basil is sweet basil, which has green leaves and a sweet, slightly peppery flavor with notes of anise and mint.",
+    "used_for": "Widely used in Italian cuisine, essential for pesto sauce, pasta dishes, pizzas, and salads. Also used in Thai and Vietnamese cooking. Medicinally used for its anti-inflammatory properties and to aid digestion.",
+    "image": "images/closeup-tasty-beautiful-basil-selective-focus.jpg",
+    "category": "Herb",
+    "is_edible": true,
+    "created_at": "2025-11-19T18:53:27.602Z",
+    "updated_at": "2025-11-23T18:45:10.786Z",
+    "countries": [
+      16
+    ]
+  }
+},
+{
+  "model": "plants.plant",
+  "pk": 3,
+  "fields": {
+    "name": "Rose",
+    "about": "Roses are woody perennial flowering plants of the genus Rosa, in the family Rosaceae. There are over three hundred species and tens of thousands of cultivars. They form a group of plants that can be erect shrubs, climbing, or trailing, with stems that are often armed with sharp prickles. Flowers vary in size and shape and are usually large and showy.",
+    "used_for": "Ornamental gardening, cut flowers, perfumes, and cosmetics. Rose petals are edible and used in teas, jams, and desserts. Rose water is used in Middle Eastern cuisine. Rose hips are rich in vitamin C.",
+    "image": "images/view-delicate-white-rose.jpg",
+    "category": "Flower",
+    "is_edible": true,
+    "created_at": "2025-11-19T18:57:16.889Z",
+    "updated_at": "2025-11-23T18:44:43.434Z",
+    "countries": [
+      5,
+      15
+    ]
+  }
+},
+{
+  "model": "plants.plant",
+  "pk": 4,
+  "fields": {
+    "name": "Aloe Vera",
+    "about": "Aloe vera is a succulent plant species of the genus Aloe. It is cultivated for agricultural and medicinal uses. The species is also used for decorative purposes and grows successfully indoors as a potted plant. It has thick, fleshy leaves that store water, making it drought-resistant. The leaves contain a clear gel that is widely used in various products.",
+    "used_for": "Skin care for burns, sunburns, and moisturizing. The gel is used in cosmetics, lotions, and ointments. Can be consumed as a dietary supplement for digestive health. Also used in juices and health drinks.",
+    "image": "images/aloe-vera.jpg",
+    "category": "Succulent",
+    "is_edible": true,
+    "created_at": "2025-11-19T18:59:18.702Z",
+    "updated_at": "2025-11-23T18:44:14.614Z",
+    "countries": [
+      1,
+      10,
+      11
+    ]
+  }
+},
+{
+  "model": "plants.plant",
+  "pk": 5,
+  "fields": {
+    "name": "Tomato",
+    "about": "The tomato is the edible berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America. While tomatoes are fruits—botanically classified as berries—they are commonly used as a vegetable ingredient or side dish. They come in various colors including red, yellow, orange, green, and purple.",
+    "used_for": "Fresh in salads, sandwiches, and salsas. Cooked in sauces, soups, stews, and ketchup. Canned, dried, or processed into paste, juice, and puree. Essential in Mediterranean and Italian cuisines.",
+    "image": "images/top-view-ripe-fresh-tomatoes-with-water-drops-black-background.jpg",
+    "category": "Vegetable",
+    "is_edible": true,
+    "created_at": "2025-11-19T19:01:07.668Z",
+    "updated_at": "2025-11-23T18:45:52.567Z",
+    "countries": [
+      7,
+      8,
+      9,
+      14
+    ]
+  }
+},
+{
+  "model": "plants.plant",
+  "pk": 7,
+  "fields": {
+    "name": "Lavender",
+    "about": "Lavender is a flowering plant in the mint family, Lamiaceae. It is native to the Old World and is found from Cape Verde and the Canary Islands, Europe across to northern and eastern Africa, the Mediterranean, southwest Asia to southeast India. Lavender is known for its beautiful purple flowers and distinctive calming fragrance that has made it popular in gardens and commercial cultivation.",
+    "used_for": "Aromatherapy for relaxation and sleep. Culinary uses in herbes de Provence, baked goods, and teas. Used in soaps, lotions, and perfumes for its fragrance. Dried flowers used in sachets and potpourri.",
+    "image": "images/lavender-sunrise-landscape.jpg",
+    "category": "Flower",
+    "is_edible": true,
+    "created_at": "2025-11-19T19:06:18.612Z",
+    "updated_at": "2025-11-23T18:43:12.131Z",
+    "countries": [
+      12,
+      13,
+      14
+    ]
+  }
+},
+{
+  "model": "plants.plant",
+  "pk": 8,
+  "fields": {
+    "name": "Prickly Pear",
+    "about": "A hardy cactus with flat, padded stems (called pads or nopales) and vibrant, cup-shaped flowers. It produces a sweet, jewel-toned fruit known as a \"tuna.\"",
+    "used_for": "Culinary: The young pads (nopales) are cooked and eaten as a vegetable in salads, tacos, and eggs. The ripe fruit (tuna) is sweet and used for juices, jams, candies, and syrups.\r\nMedicinal: Traditionally used to help control blood sugar levels and lower cholesterol.\r\nAgricultural: The cactus is often planted as a living fence or cattle fodder.",
+    "image": "images/2148329134.jpg",
+    "category": "Succulent",
+    "is_edible": true,
+    "created_at": "2025-11-25T07:00:29.483Z",
+    "updated_at": "2025-11-25T07:00:29.484Z",
+    "countries": [
+      3,
+      7
+    ]
+  }
+},
+{
+  "model": "plants.comment",
+  "pk": 1,
+  "fields": {
+    "plant": 3,
+    "user": 1,
+    "comment": "I love roses!",
+    "created_at": "2025-11-22T21:40:37.479Z"
+  }
+},
+{
+  "model": "plants.comment",
+  "pk": 2,
+  "fields": {
+    "plant": 8,
+    "user": 3,
+    "comment": "This is the first time i see this plant!",
+    "created_at": "2025-11-29T17:41:55.678Z"
+  }
+},
+{
+  "model": "plants.comment",
+  "pk": 3,
+  "fields": {
+    "plant": 4,
+    "user": 2,
+    "comment": "This plan is so soothing",
+    "created_at": "2025-11-29T17:55:20.056Z"
+  }
+}
+]

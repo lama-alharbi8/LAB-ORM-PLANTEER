@@ -1,0 +1,47 @@
+[
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": 3,
+    "about": "",
+    "profile_image": "images/profile_image/profile_image.jpg"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "about": "",
+    "profile_image": "images/profile_image/profile_image.jpg"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "about": "99",
+    "profile_image": "images/profile_image/profile_image.jpg"
+  }
+},
+{
+  "model": "accounts.favorite",
+  "pk": 3,
+  "fields": {
+    "user": 2,
+    "plant": 4,
+    "created_at": "2025-11-29T20:25:16.319Z"
+  }
+},
+{
+  "model": "accounts.favorite",
+  "pk": 5,
+  "fields": {
+    "user": 2,
+    "plant": 5,
+    "created_at": "2025-11-29T20:31:39.926Z"
+  }
+}
+]
