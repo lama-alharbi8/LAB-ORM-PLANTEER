@@ -4,6 +4,6 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "cd Planteer && python manage.py migrate && paython manage.py loaddata initial_data.json && python manage.py collectstatic --noinput && gunicorn Planteer.wsgi"
+        "startCommand": "cd Planteer && python manage.py migrate && python manage.py loaddata initial_data.json && python manage.py collectstatic --noinput && gunicorn Planteer.wsgi"
     }
 }
